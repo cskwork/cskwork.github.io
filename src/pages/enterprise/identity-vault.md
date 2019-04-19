@@ -1,10 +1,11 @@
 ---
 title: Identity Vault
 template: enterprise-plugin
-version: 3.0.0
-minor: 3.0.X
+version: 3.1.0
+minor: 3.1.X
 otherVersions:
   - 2.0.X
+  - 3.0.X
 ---
 
 Ionic Identity Vault
@@ -16,22 +17,48 @@ The Vault manages secure user identity and session tokens, ensuring sensitive to
 
 Without Ionic Identity Vault, Ionic developers have to resort to combining third party Cordova plugins, often resulting in insecure setups due to the lack of correct implementation of biometric and at-rest encryption strategies.
 
-Installation and Usage
-----------------------
+**Important Note**
 
-Before attempting to use the plugin make sure you're using our enterprise version of the Cordova CLI. This will ensure that you can successfully install & restore you cordova project since the regular version of the CLI doesn't support scoped plugins well.
+> If you're upgrading from the `3.0.0` to `>=3.1.0` versions you no longer need to install 2 packages. The plugin now ships under the `@ionic-enterprise/identity-vault` package. Simply run the commands below to upgrade. Imports and usage should remain identical.
+
+Upgrade from v3.0.0 to >=v3.1.0
+-------------------------------
+
+First remove v3.0.0 of the plugin
 
 ```shell
-npm uninstall -g cordova
-npm install -g @ionic-enterprise/cordova
+# NOTE do not prepend @ionic-enterprise to the plugin name when removing v3.0.0
+ionic cordova plugin rm cordova-plugin-identity-vault
 ```
 
-The vault comes with a native Cordova plugin and a JavaScript library complete with TypeScript types. Both need to be installed to use the vault.
+You should make sure `@ionic-enterprise/cordova-plugin-identity-vault` and `cordova-plugin-identity-vault` are completely removed from your package.json in all locations.
+
+```javascript
+...
+  "dependencies": {
+    ...
+     // Make sure both these are gone from the dependencies
+    "@ionic-enterprise/cordova-plugin-identity-vault": "3.0.0",
+    "@ionic-enterprise/identity-vault": "3.0.0",
+    ...
+  }
+  "cordova": {
+    "plugins": {
+      ...
+      // Make sure both these are gone from the cordova plugins section as well
+      "@ionic-enterprise/cordova-plugin-identity-vault": {},
+      "cordova-plugin-identity-vault": {}
+      ...
+    },
+    ...
+  }
+...
+```
+
+It should now be safe to add >=v3.1.0 of the plugin
 
 ```shell
-ionic enterprise register --key=MY_PRODUCT_KEY
-npm install @ionic-enterprise/identity-vault
-ionic cordova plugin add @ionic-enterprise/cordova-plugin-identity-vault
+ionic cordova plugin add @ionic-enterprise/identity-vault@latest
 ```
 
 #### Configuring the Vault
@@ -813,6 +840,24 @@ ___
 ▸ **lockOut**(): `Promise`<`void`>
 
 Lock the user out without clearing their secure session information from the vault
+
+**Returns:** `Promise`<`void`>
+
+___
+<a id="identityvaultuser.login"></a>
+
+###  login
+
+▸ **login**(session: *`T`*, authMode?: *[AuthMode](#authmode)*): `Promise`<`void`>
+
+Login a new session for the user. This method will clear the vault & any stored PIN for previously stored sessions.
+
+**Parameters:**
+
+| Name | Type | Description |
+| ------ | ------ | ------ |
+| session | `T` |  the session to store |
+| `Optional` authMode | [AuthMode](#authmode) |
 
 **Returns:** `Promise`<`void`>
 
