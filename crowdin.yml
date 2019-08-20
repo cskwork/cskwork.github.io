@@ -1,5 +1,5 @@
 files:
-  - source: /src/l10n/interface/messages.json
-	  translation: /src/l10n/interface/messages-%two_letters_code%.json
   - source: /src/pages/**/*.md
     translation: /src/l10n/pages/%two_letters_code%/**/%original_file_name%
+  - source: /src/l10n/interface/messages.json
+    translation: /src/l10n/interface/messages-%two_letters_code%.json
