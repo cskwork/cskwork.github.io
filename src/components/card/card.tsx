@@ -11,12 +11,14 @@ export class DocsCard {
   @Prop() icon: string;
   @Prop() ionicon: string;
   @Prop() img: string;
+  @Prop() size: 'md' | 'lg';
 
   hostData() {
     return {
       class: {
         'Card-with-image': !!this.img,
         'Card-without-image': !this.img,
+        'Card-size-lg': this.size === 'lg',
       }
     };
   }
