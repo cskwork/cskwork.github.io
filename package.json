@@ -24,6 +24,7 @@
     "@ionic/docs": "5.0.0",
     "@sentry/node": "^5.7.1",
     "@stencil/router": "^1.0.1",
+    "@stencil/store": "^0.2.1",
     "compression": "^1.7.4",
     "express": "^4.16.4",
     "helmet": "^3.21.2",
@@ -34,7 +35,7 @@
     "throng": "^4.0.0"
   },
   "devDependencies": {
-    "@stencil/core": "1.8.8",
+    "@stencil/core": "^1.9.0-18",
     "@types/prismjs": "^1.9.1",
     "chokidar": "^3.3.1",
     "dotenv": "^8.1.0",
