@@ -1,8 +1,5 @@
 import { h } from '@stencil/core';
-import { useLocalStorage } from '../../../local-storage';
 import { toHypertext } from '../to-hypertext';
-
-const [getFramework] = useLocalStorage('ionic-docs:framework');
 
 export default (props) => {
   const { page } = props;
@@ -78,8 +75,6 @@ export default (props) => {
 
 const renderUsage = (usage = {}, path: string) => {
   const keys = Object.keys(usage);
-  const frameworkPref = getFramework();
-  const framework = frameworkPref ? frameworkPref.toLowerCase() : null;
 
   if (!keys.length) {
     return null;
@@ -90,11 +85,10 @@ const renderUsage = (usage = {}, path: string) => {
       <h2 id="usage">
         <a href="#usage">Usage</a>
       </h2>
-      <docs-tabs key={path} listen-for="ionic-docs:framework">
+      <docs-tabs key={path}>
           {keys.map(key =>
             <docs-tab
-              tab={key}
-              selected={framework === key.toLowerCase()}>
+              tab={key}>
                 {toHypertext(h, usage[key])}
             </docs-tab>
           )}

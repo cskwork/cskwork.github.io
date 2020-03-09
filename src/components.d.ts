@@ -148,7 +148,6 @@ export namespace Components {
         "links": Link[];
     }
     interface DocsTabs {
-        "listenFor": string;
     }
     interface FileTree {
     }
@@ -677,7 +676,6 @@ declare namespace LocalJSX {
         "links"?: Link[];
     }
     interface DocsTabs {
-        "listenFor"?: string;
     }
     interface FileTree {
     }

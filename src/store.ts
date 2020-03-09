@@ -1,6 +1,6 @@
 import { createStore } from '@stencil/store';
 
-
+// Valid options
 export const Frameworks = ['Angular', 'React', 'Vue', 'JavaScript'] as const;
 export const Runtimes = ['Capacitor', 'Cordova'] as const;
 
@@ -10,8 +10,9 @@ export interface DocsStore {
   valid: {[key: string]: any};
 }
 
+// Grab default values from localStorage if possible
 const initialValues: DocsStore = {
-  framework: localStorage.getItem('ionic-docs:framework') as any ?? 'Angular',
+  framework: localStorage.getItem('ionic-docs:framework') as any ?? 'React',
   runtime: localStorage.getItem('ionic-docs:runtime') as any ?? 'Capacitor',
   valid: {
     framework: Frameworks,
@@ -32,7 +33,6 @@ subscribe(operation => {
       currentlySaved !== state[key] &&
       validValues.indexOf(state[key] !== -1)) {
 
-        console.log('saving!', key, state[key]);
         setSaved(key, state[key]);
     }
   }

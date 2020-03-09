@@ -1,32 +1,32 @@
-import { Component, Element, Listen, Prop, State, h } from '@stencil/core';
+import { Component, Element, State, Watch, h } from '@stencil/core';
+import store from '../../store';
 
 @Component({
   tag: 'docs-tabs',
   styleUrl: 'tabs.css'
 })
 export class DocsTabs {
-  @Prop() listenFor: string;
   @State() selected: HTMLDocsTabElement = null;
   @State() tabs: HTMLDocsTabElement[] = [];
   @Element() element: HTMLDocsTabElement;
 
-  // if an event with a name that matches the 'listenFor' property is heard,
-  // check the tabs to see if the event has a value that matches a tab title
-  // The original purpose for this is the Framework Selection dropdown
-  @Listen('local-storage', { target: 'window' })
-  listenForFrameworkSelection(event) {
-    if (this.listenFor && event.detail.key === this.listenFor) {
-      this.tabs.forEach(tab => {
-        if (tab.tab.toLowerCase() === event.detail.value.toLowerCase()) {
-          this.select(tab);
-        }
-      });
-    }
-  }
+  storeKey: string;
 
   componentDidLoad() {
     this.tabs = Array.from(this.element.querySelectorAll('docs-tab'));
-    this.select(this.tabs.find(t => t.hasAttribute('selected')) || this.tabs[0]);
+
+    this.tabs.forEach(tab => {
+      ['framework', 'runtime'].forEach(key => {
+        if (tab.getAttribute('tab').toLowerCase() === store[key].toLowerCase()) {
+          this.select(tab);
+          this.storeKey = key;
+        }
+      });
+    });
+
+    if (!this.storeKey) {
+      this.select(this.tabs.find(t => t.hasAttribute('selected')) || this.tabs[0]);
+    }
   }
 
   select(tab: HTMLDocsTabElement) {
@@ -37,12 +37,13 @@ export class DocsTabs {
 
       this.selected = tab;
       this.selected.setAttribute('selected', '');
+      store[this.storeKey] = this.selected.getAttribute('tab');
     }
   }
 
   toTabButton = (tab: HTMLDocsTabElement) => {
     const label = tab.getAttribute('tab');
-    const isSelected = this.selected === tab;
+    const isSelected = this.selected.getAttribute('tab') === label.toLowerCase();
     const buttonClass = {
       'Tabs-button': true,
       'is-selected': isSelected
