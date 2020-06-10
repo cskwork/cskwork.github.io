@@ -1,11 +1,13 @@
 ---
 title: Auth Connect
 template: enterprise-plugin
-version: 2.2.0
-minor: 2.2.X
+version: 3.0.0
+minor: 3.0.X
+otherVersions:
+  - 2.2.X
 ---
 
-Ionic Auth Connect handles logging in and/or registering a user with an authentication provider (such as Auth0, Azure AD, AWS Cognito, or Okta) using industry standard OAuth/OpenId Connect on iOS, Android, or on the web.
+Ionic Auth Connect handles logging in and/or registering a user with an authentication provider (such as Auth0, Azure AD, or AWS Cognito) using industry standard OAuth/OpenId Connect on iOS, Android, or on the web.
 
 When used with [Ionic Identity Vault](/docs/enterprise/identity-vault), it provides a complete security solution for authentication and storage of logged-in credentials.
 
@@ -60,7 +62,6 @@ Leveraging the OAuth/OpenId Connect protocols, Auth Connect supports:
     * v1.0
     * v2.0, including [Azure Active Directory B2C](/docs/enterprise/auth-connect/azure-ad-b2c)
 * [Cognito](/docs/enterprise/auth-connect/aws-cognito) (AWS)
-* [Okta](/docs/enterprise/auth-connect/okta)
 
 Workflow
 ----
@@ -126,7 +127,7 @@ Login can occur either within the current tab/window or a separate pop-up window
 
 <wistia-video video-id="zk3ys1615x"></wistia-video>
 
-The current tab option is great for developers supporting IE11. Within the `IonicAuthOptions` configuration, set `implicit_login` to "CURRENT". Next, in the login page (or whichever page is navigated to after login - the `redirectUri` in the config options) implement:
+Within the `IonicAuthOptions` configuration, set `implicit_login` to "CURRENT". Next, in the login page (or whichever page is navigated to after login - the `redirectUri` in the config options) implement:
 
 ```typescript  
 async ngOnInit() {
@@ -137,13 +138,17 @@ async ngOnInit() {
     await this.authentication.handleCallback(window.location.href);
     // Navigate to another page
     this.navController.navigateRoot('/tabs/home');
-    }
+  }
 }
 ```
 
 ### Testing Locally
 
 To test an Ionic app using Auth Connect locally, configure `IonicAuthOptions` to use `http://localhost:8100/` as the base URL for properties such as `redirectUri` and `logoutUrl`. Then, run the `ionic serve` command.
+
+## Upgrading to v3.0.0
+
+3.0.0 drops support for IE11 but otherwise is a drop-in replacement for 2.x.
 
 ## Upgrading to v2.0.0
 
@@ -523,6 +528,8 @@ The type of the Auth Server, currently only the following are supported:
 *   Okta
 *   Ping
 
+'general' is deprecated--please use a specific provider.
+
 ___
 <a id="ionicauthoptions.clientid"></a>
 
@@ -681,6 +688,8 @@ The type of the Auth Server, currently only the following are supported:
 *   Salesforce
 *   Okta
 *   Ping
+
+'general' is deprecated--please use a specific provider.
 
 ___
 <a id="ionicgeneralauthoptions.clientid"></a>
@@ -963,6 +972,29 @@ ___
 # Changelog
 
 
+
+### [3.0.0] (2020-06-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* IE 11 is no longer supported.
+* Plugin must be imported and bundled into your app for use. (Code is no longer being exported to window.)
+
+### Bug Fixes
+
+* Properly decode JWTs with non-ASCII characters [SE-200]  
+
+
+* remove shims 
+* switch to esm 
+
+### [2.2.1] (2020-05-29)
+
+
+### Bug Fixes
+
+* **okta:** fix logout configuration  
 
 ### [2.2.0] (2020-05-27)
 
