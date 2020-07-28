@@ -1,20 +1,20 @@
 ---
 title: Apple Payment Pass
 template: enterprise-plugin
-version: 1.0.2
-minor: 1.0.X
+version: 1.1.0
+minor: 1.1.X
+otherVersions:
+  - 1.0.X
 ---
 
 Apple Payment Pass
 ==================
 
-The Apple Payment Pass plugin provides support for adding credit/debit cards to Apple Wallet. It also can check if the credit/debit card exists in Wallet.
+This plugin provides support for adding credit/debit cards to Apple Wallet. It also can check if the credit/debit card exists in Wallet.
 
-**Important Note:**
+**Important Note**
 
-> Adding payment passes requires a special entitlement issued by Apple. Your app must include this entitlement before you can use this class. For more information on requesting this entitlement, see the Apple Pay [implementation details](https://developer.apple.com/apple-pay/implementation/).
-
-<native-ent-install plugin-id="apple-payment-pass" variables=""></native-ent-install>
+> Adding payment passes requires a special entitlement issued by Apple. Your app must include this entitlement before you can use this class. For more information on requesting this entitlement, see the Card Issuers section at developer.apple.com/apple-pay/.
 
 Usage
 -----
@@ -168,7 +168,7 @@ This method provides the data needed to create a request to add your payment pas
 
 ###  RequestTemplate
 
-**RequestTemplate**:
+**RequestTemplate**: 
 
 Constants used to define the shape of the body used during the request to the server
 
@@ -217,7 +217,7 @@ ___
 
 ###  ApplePaymentPass
 
-**ApplePaymentPass**:
+**ApplePaymentPass**: 
 
 This plugin provides support for adding credit/debit cards to Apple Wallet. It also can check if the credit/debit card exists in Wallet.
 
@@ -291,7 +291,7 @@ ___
 
 ###  AddPassOptions
 
-**AddPassOptions**:
+**AddPassOptions**: 
 
 The options interface to pass to the [addPaymentPass](#applepaymentpass.addpaymentpass) function.
 
@@ -362,7 +362,7 @@ ___
 
 ###  AddPassResponse
 
-**AddPassResponse**:
+**AddPassResponse**: 
 
 The response from adding the pass with the pass data
 
@@ -426,7 +426,7 @@ ___
 
 ###  CardData
 
-**CardData**:
+**CardData**: 
 
 The card data for the PKAddPaymentPassViewController
 
@@ -481,7 +481,7 @@ ___
 
 ###  DelegateError
 
-**DelegateError**:
+**DelegateError**: 
 
 Error thrown by [addPaymentPass](#applepaymentpass.addpaymentpass) when the PKAddPaymentPassViewController fails to add the card to the wallet
 
@@ -522,7 +522,7 @@ ___
 
 ###  Headers
 
-**Headers**:
+**Headers**: 
 
 An object with the headers required for the server request.
 
@@ -540,7 +540,7 @@ ___
 
 ###  ServerError
 
-**ServerError**:
+**ServerError**: 
 
 Error thrown by [addPaymentPass](#applepaymentpass.addpaymentpass) when server responds with a HTTP status code >= 400
 
@@ -587,6 +587,15 @@ The activation state of the provisioned card
 ___
 
 ## Change Log
+
+
+
+### [1.1.0] (2020-07-28)
+
+
+### Features
+
+* support for Angular Ivy 
 
 
 
