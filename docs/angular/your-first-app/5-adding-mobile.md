@@ -12,12 +12,12 @@ Let’s start with making some small code changes - then our app will “just wo
 
 Import the Ionic [Platform API](https://ionicframework.com/docs/angular/platform) into `photo.service.ts`, which is used to retrieve information about the current device. In this case, it’s useful for selecting which code to execute based on the platform the app is running on (web or mobile):
 
-```typescript
+```tsx
 import { Platform } from '@ionic/angular';
 
 export class PhotoService {
-  public photos: Photo[] = [];
-  private PHOTO_STORAGE: string = "photos";
+  public photos: UserPhoto[] = [];
+  private PHOTO_STORAGE: string = 'photos';
   private platform: Platform;
 
   constructor(platform: Platform) {
@@ -32,20 +32,20 @@ export class PhotoService {
 
 First, we’ll update the photo saving functionality to support mobile. In the `readAsBase64()` function, check which platform the app is running on. If it’s “hybrid” (Capacitor or Cordova, two native runtimes), then read the photo file into base64 format using the Filesystem `readFile()` method. Otherwise, use the same logic as before when running the app on the web:
 
-```typescript
-private async readAsBase64(cameraPhoto: CameraPhoto) {
+```tsx
+private async readAsBase64(photo: Photo) {
   // "hybrid" will detect Cordova or Capacitor
   if (this.platform.is('hybrid')) {
     // Read the file into base64 format
     const file = await Filesystem.readFile({
-      path: cameraPhoto.path
+      path: photo.path
     });
 
     return file.data;
   }
   else {
     // Fetch the photo, read as a blob, then convert to base64 format
-    const response = await fetch(cameraPhoto.webPath);
+    const response = await fetch(photo.webPath);
     const blob = await response.blob();
 
     return await this.convertBlobToBase64(blob) as string;
@@ -55,11 +55,11 @@ private async readAsBase64(cameraPhoto: CameraPhoto) {
 
 Next, update the `savePicture()` method. When running on mobile, set `filepath` to the result of the `writeFile()` operation - `savedFile.uri`. When setting the `webviewPath`, use the special `Capacitor.convertFileSrc()` method ([details here](https://ionicframework.com/docs/core-concepts/webview#file-protocol)).
 
-```typescript
+```tsx
 // Save picture to file on device
-  private async savePicture(cameraPhoto: CameraPhoto) {
+  private async savePicture(photo: Photo) {
     // Convert photo to base64 format, required by Filesystem API to save
-    const base64Data = await this.readAsBase64(cameraPhoto);
+    const base64Data = await this.readAsBase64(photo);
 
     // Write the file to the data directory
     const fileName = new Date().getTime() + '.jpeg';
@@ -82,7 +82,7 @@ Next, update the `savePicture()` method. When running on mobile, set `filepath` 
       // already loaded into memory
       return {
         filepath: fileName,
-        webviewPath: cameraPhoto.webPath
+        webviewPath: photo.webPath
       };
     }
   }
@@ -90,7 +90,7 @@ Next, update the `savePicture()` method. When running on mobile, set `filepath` 
 
 Next, head back over to the `loadSaved()` function we implemented for the web earlier. On mobile, we can directly set the source of an image tag - `<img src="x" />` - to each photo file on the Filesystem, displaying them automatically. Thus, only the web requires reading each image from the Filesystem into base64 format. Update this function to add an _if statement_ around the Filesystem code:
 
-```typescript
+```tsx
 public async loadSaved() {
   // Retrieve cached photo array data
   const photoList = await Storage.get({ key: this.PHOTO_STORAGE });

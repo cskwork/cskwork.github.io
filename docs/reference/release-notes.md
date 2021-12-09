@@ -1,5 +1,7 @@
 ---
-template: release-notes
+title: Release Notes
 ---
 
-# Release Notes
+import ReleaseNotes from '@components/page/reference/ReleaseNotes';
+
+<ReleaseNotes />

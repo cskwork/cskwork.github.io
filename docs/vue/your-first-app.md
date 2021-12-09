@@ -8,44 +8,58 @@ The great thing about Ionic is that with one codebase, you can build for any pla
 
 Here’s the finished app running on all 3 platforms:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0ASQ13Y1Rk4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/0ASQ13Y1Rk4"
+  frameborder="0"
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+></iframe>
 
 ## What We'll Build
 
 We'll create a Photo Gallery app that offers the ability to take photos with your device's camera, display them in a grid, and store them permanently on the device.
 
 Highlights include:
-* One Vue-based codebase that runs on the web, iOS, and Android using Ionic Framework [UI components](https://ionicframework.com/docs/components).
-* Deployed as a native iOS and Android mobile app using [Capacitor](https://capacitor.ionicframework.com), Ionic's official native app runtime.
-* Photo Gallery functionality powered by the Capacitor [Camera](https://capacitor.ionicframework.com/docs/apis/camera), [Filesystem](https://capacitor.ionicframework.com/docs/apis/filesystem), and [Storage](https://capacitor.ionicframework.com/docs/apis/storage) APIs.
+
+- One Vue-based codebase that runs on the web, iOS, and Android using Ionic Framework [UI components](https://ionicframework.com/docs/components).
+- Deployed as a native iOS and Android mobile app using [Capacitor](https://capacitor.ionicframework.com), Ionic's official native app runtime.
+- Photo Gallery functionality powered by the Capacitor [Camera](https://capacitor.ionicframework.com/docs/apis/camera), [Filesystem](https://capacitor.ionicframework.com/docs/apis/filesystem), and [Storage](https://capacitor.ionicframework.com/docs/apis/storage) APIs.
 
 Find the complete app code referenced in this guide [on GitHub](https://github.com/ionic-team/photo-gallery-capacitor-vue).
 
 ## Download Required Tools
 
 Download and install these right away to ensure an optimal Ionic development experience:
-* <strong>Node.js</strong> for interacting with the Ionic ecosystem. [Download the LTS version here](https://nodejs.org/en/).
-* <strong>A code editor</strong> for... writing code! We are fans of [Visual Studio Code](https://code.visualstudio.com/).
-* <strong>Command-line interface/terminal (CLI)</strong>:
- * <strong>Windows</strong> users: for the best Ionic experience, we recommend the built-in command line (cmd) or the Powershell CLI, running in Administrator mode.
- * <strong>Mac/Linux</strong> users, virtually any terminal will work.
 
+- **Node.js** for interacting with the Ionic ecosystem. [Download the LTS version here](https://nodejs.org/en/).
+- **A code editor** for... writing code! We are fans of [Visual Studio Code](https://code.visualstudio.com/).
+- **Command-line interface/terminal (CLI)**:
+  - **Windows** users: for the best Ionic experience, we recommend the built-in command line (cmd) or the Powershell
+    CLI, running in Administrator mode.
+  - **Mac/Linux** users, virtually any terminal will work.
 
 ## Install Ionic Tooling
+
 Run the following in the command line terminal to install the Ionic CLI (`ionic`), `native-run`, used to run native binaries on devices and simulators/emulators, and `cordova-res`, used to generate native app icons and splash screens:
 
-> To open a terminal in Visual Studio Code, go to Terminal -> New Terminal.
+:::note
+To open a terminal in Visual Studio Code, go to Terminal -> New Terminal.
+:::
 
 ```shell
 $ npm install -g @ionic/cli@latest native-run cordova-res
 ```
 
-> The `-g` option means _install globally_. When packages are installed globally, `EACCES` permission errors can occur.
->
-> Consider setting up npm to operate globally without elevated permissions. See [Resolving Permission Errors](/docs/developing/tips#resolving-permission-errors) for more information.
+:::note
+The `-g` option means _install globally_. When packages are installed globally, `EACCES` permission errors can occur.
 
+Consider setting up npm to operate globally without elevated permissions. See [Resolving Permission Errors](../developing/tips.md#resolving-permission-errors) for more information.
+:::
 
 ## Create an App
+
 Next, create an Ionic Vue app that uses the "Tabs" starter template and adds Capacitor for native functionality:
 
 ```shell
@@ -80,7 +94,7 @@ After installation, open up the project in your code editor of choice.
 
 Next, import `@ionic/pwa-elements` by editing `src/main.ts`.
 
-```typescript
+```tsx
 // Above the createApp() line
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
 
@@ -91,6 +105,7 @@ defineCustomElements(window);
 That’s it! Now for the fun part - let’s see the app in action.
 
 ## Run the App
+
 Run this command in your shell:
 
 ```shell
@@ -136,7 +151,7 @@ Open `/src/views/Tab2.vue`. We see:
 
 We put the visual aspects of our app into `<ion-content>`. In this case, it’s where we’ll add a button that opens the device’s camera as well as displays the image captured by the camera. But first, remove the `ExploreContainer` component, beginning with the import statement:
 
-```typescript
+```tsx
 import ExploreContainer from '@/components/ExploreContainer.vue';
 ```
 
@@ -148,27 +163,51 @@ Next, remove the component name (`ExploreContainer`) from the `components` list 
 
 We'll replace it with a [floating action button](https://ionicframework.com/docs/api/fab) (FAB). First, update the imports within the `<script>` tag to include the Camera icon as well as some of the Ionic components we'll use shortly:
 
-```typescript
+```tsx
 import { camera, trash, close } from 'ionicons/icons';
-import { IonPage, IonHeader, IonFab, IonFabButton, IonIcon,
-         IonToolbar, IonTitle, IonContent, IonGrid, IonRow,
-         IonCol, IonImg } from '@ionic/vue';
+import {
+  IonPage,
+  IonHeader,
+  IonFab,
+  IonFabButton,
+  IonIcon,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonImg,
+} from '@ionic/vue';
 ```
 
 Next, add the new Ionic components we'll be using to the default export as well as returning the Ionicons in the `setup()` method (part of the [Composition API](https://v3.vuejs.org/api/composition-api.html#setup)):
 
-```typescript
-export default  {
+```tsx
+export default {
   name: 'Tab2',
-  components: { IonPage, IonHeader, IonFab, IonFabButton, IonIcon,
-         IonToolbar, IonTitle, IonContent, IonGrid, IonRow,
-         IonCol, IonImg },
+  components: {
+    IonPage,
+    IonHeader,
+    IonFab,
+    IonFabButton,
+    IonIcon,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonGrid,
+    IonRow,
+    IonCol,
+    IonImg,
+  },
   setup() {
     return {
-      camera, trash, close
-    }
-  }
-}
+      camera,
+      trash,
+      close,
+    };
+  },
+};
 ```
 
 Then, add the FAB to the bottom of the page. Use the camera image as the icon, and call the `takePhoto()` function when this button is clicked (to be implemented soon):
@@ -187,7 +226,7 @@ We’ll be creating the `takePhoto` method and the logic to use the Camera and o
 
 Next, open `src/views/Tabs.vue` then import the `images` icon:
 
-```typescript
+```tsx
 import { images, square, triangle } from 'ionicons/icons';
 ```
 
