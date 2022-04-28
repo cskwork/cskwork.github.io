@@ -1,5 +1,5 @@
 ```tsx
-import React, { useRef } from 'react';
+import React from 'react';
 import { IonButton, IonHeader, IonContent, IonToolbar, IonTitle, IonPage, useIonModal } from '@ionic/react';
 
 const ModalExample = ({ onDismiss }) => (

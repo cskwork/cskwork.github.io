@@ -12,7 +12,6 @@ import vue_example from './vue/example.vue.md';
 import vue_modal from './vue/modal.vue.md';
 
 <Playground
-  id="modal-controller"
   code={{
     javascript,
     react,
