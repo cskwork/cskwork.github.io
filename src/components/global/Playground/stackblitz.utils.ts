@@ -4,9 +4,6 @@ import sdk from '@stackblitz/sdk';
 const DEFAULT_EDITOR_TITLE = 'Ionic Docs Example';
 // The default description to use for Stackblitz examples (when not overwritten)
 const DEFAULT_EDITOR_DESCRIPTION = '';
-// Default package version to use for all @ionic/* packages.
-const DEFAULT_IONIC_VERSION = '^6.0.0';
-
 
 export interface EditorOptions {
   /**
@@ -37,19 +34,37 @@ export interface EditorOptions {
     imports: string[];
     declarations?: string[];
   };
+
+  /**
+   * The major version of Ionic to use for the Stackblitz example.
+   */
+  version?: number;
 }
 
-const loadSourceFiles = async (files: string[]) => {
-  const sourceFiles = await Promise.all(files.map(f => fetch(`/docs/code/stackblitz/${f}`)));
+const loadSourceFiles = async (files: string[], version: number) => {
+  const versionFolder = `v${version}`;
+  const sourceFiles = await Promise.all(files.map(f => fetch(`/docs/code/stackblitz/${versionFolder}/${f}`)));
   return (await Promise.all(sourceFiles.map(res => res.text())));
 }
 
 const openHtmlEditor = async (code: string, options?: EditorOptions) => {
-  const [index_ts, index_html, variables_css] = await loadSourceFiles([
+  const [index_ts, index_html, variables_css, package_json] = await loadSourceFiles([
     'html/index.ts',
     options?.includeIonContent ? 'html/index.withContent.html' : 'html/index.html',
-    'html/variables.css'
-  ]);
+    'html/variables.css',
+    'html/package.json'
+  ], options.version);
+
+  let dependencies = {};
+
+  try {
+    dependencies = {
+      ...dependencies,
+      ...JSON.parse(package_json).dependencies,
+    }
+  } catch (e) {
+    console.error('Failed to parse package.json contents', e);
+  }
 
   sdk.openProject({
     template: 'typescript',
@@ -61,14 +76,25 @@ const openHtmlEditor = async (code: string, options?: EditorOptions) => {
       'theme/variables.css': variables_css,
       ...options?.files
     },
-    dependencies: {
-      '@ionic/core': DEFAULT_IONIC_VERSION,
-    },
+    dependencies
   })
 }
 
 const openAngularEditor = async (code: string, options?: EditorOptions) => {
-  let [main_ts, app_module_ts, app_component_ts, app_component_css, app_component_html, example_component_ts, styles_css, global_css, variables_css, angular_json, tsconfig_json] = await loadSourceFiles([
+  let [
+    main_ts,
+    app_module_ts,
+    app_component_ts,
+    app_component_css,
+    app_component_html,
+    example_component_ts,
+    styles_css,
+    global_css,
+    variables_css,
+    angular_json,
+    tsconfig_json,
+    package_json
+  ] = await loadSourceFiles([
     'angular/main.ts',
     'angular/app.module.ts',
     'angular/app.component.ts',
@@ -79,8 +105,9 @@ const openAngularEditor = async (code: string, options?: EditorOptions) => {
     'angular/global.css',
     'angular/variables.css',
     'angular/angular.json',
-    'angular/tsconfig.json'
-  ])
+    'angular/tsconfig.json',
+    'angular/package.json'
+  ], options.version)
 
   if (options.angularModuleOptions) {
     if (options.angularModuleOptions.imports) {
@@ -92,6 +119,17 @@ const openAngularEditor = async (code: string, options?: EditorOptions) => {
   }
 
   app_module_ts = app_module_ts.replace('{{ MODE }}', options?.mode);
+
+  let dependencies = {};
+
+  try {
+    dependencies = {
+      ...dependencies,
+      ...JSON.parse(package_json).dependencies,
+    }
+  } catch (e) {
+    console.error('Failed to parse package.json contents', e);
+  }
 
   sdk.openProject({
     template: 'angular-cli',
@@ -115,17 +153,7 @@ const openAngularEditor = async (code: string, options?: EditorOptions) => {
       'tsconfig.json': tsconfig_json,
       ...options?.files
     },
-    dependencies: {
-      '@ionic/angular': DEFAULT_IONIC_VERSION,
-      /**
-       * Stackblitz doesn't install the underlying `@ionic/core` package type declarations.
-       * This can lead to issues with extended type declarations, such as our proxies
-       * that extend the JSX component type.
-       *
-       * We manually install this dependency to avoid this issue in Stackblitz.
-       */
-      '@ionic/core': DEFAULT_IONIC_VERSION,
-    },
+    dependencies
   });
 }
 
@@ -138,7 +166,7 @@ const openReactEditor = async (code: string, options?: EditorOptions) => {
     'react/package.json',
     'react/package-lock.json',
     'react/index.html'
-  ]);
+  ], options.version);
 
   app_tsx = app_tsx.replace('{{ MODE }}', options?.mode);
 
@@ -175,7 +203,7 @@ const openVueEditor = async (code: string, options?: EditorOptions) => {
     'vue/tsconfig.json',
     'vue/tsconfig.node.json',
     'vue/env.d.ts'
-  ]);
+  ], options.version);
 
   main_ts = main_ts.replace('{{ MODE }}', options?.mode);
 

@@ -13,4 +13,5 @@ import angular from './angular.md';
     angular,
   }}
   src="usage/loading/inline/demo.html"
+  version={7}
 />
