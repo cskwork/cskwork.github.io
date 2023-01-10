@@ -119,6 +119,12 @@ Using the modern syntax involves three steps:
 import Migration from '@site/static/usage/v7/input/migration/index.md';
 
 <Migration />
+  
+
+:::note
+In past versions of Ionic, `ion-item` was required for `ion-input` to function properly. Starting in Ionic 7.0, `ion-input` should only be used in an `ion-item` when the item is placed in an `ion-list`. Additionally, `ion-item` is no longer required for `ion-input` to function properly.
+:::
+
 
 ### Using the Legacy Syntax
 
