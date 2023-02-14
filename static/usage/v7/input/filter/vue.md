@@ -2,33 +2,36 @@
 <template>
   <ion-list>
     <ion-item>
-      <ion-input label="Default input"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input label="Input with placeholder" placeholder="Enter company name"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input label="Input with value" value="121 S Pinckney St #300"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input label="Readonly input" value="Madison" :readonly="true"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input label="Disabled input" value="53703" :disabled="true"></ion-input>
+      <ion-input
+        v-model="inputModel" 
+        label="Alphanumeric Characters"
+      ></ion-input>
     </ion-item>
   </ion-list>
 </template>
 
 <script lang="ts">
   import { IonInput, IonItem, IonList } from '@ionic/vue';
-  import { defineComponent } from 'vue';
+  import { defineComponent, ref, watch } from 'vue';
 
   export default defineComponent({
     components: { IonInput, IonItem, IonList },
+    setup() {
+      const inputModel = ref('');
+
+      /**
+       * flush: 'post' runs the callback
+       * after the Vue ion-input component
+       * has updated.
+       * See https://vuejs.org/guide/essentials/watchers.html#callback-flush-timing
+       * for more information.
+       */
+      watch(inputModel, (newValue) => {
+        inputModel.value = newValue.replace(/[^a-zA-Z0-9]+/g,'');
+      }, { flush: 'post'});
+      
+      return { inputModel };
+    }
   });
 </script>
 ```
