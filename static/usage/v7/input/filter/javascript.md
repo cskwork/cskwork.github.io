@@ -11,7 +11,7 @@
     const value = ev.target.value;
 
     // Removes non alphanumeric characters
-    input.value = ev.target.value.replace(/[^a-zA-Z0-9]+/g,'')
+    input.value = ev.target.value.replace(/[^a-zA-Z0-9]+/g,'');
   });
 </script>
 ```
