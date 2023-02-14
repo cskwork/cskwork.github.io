@@ -6,7 +6,7 @@
 </ion-list>
 
 <script>
-  const input = document.querySelector('ion-input');
+  var input = document.querySelector('ion-input');
   input.addEventListener('ionInput', (ev) => {
     const value = ev.target.value;
 
