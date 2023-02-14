@@ -82,6 +82,13 @@ import Counter from '@site/static/usage/v7/input/counter/index.md';
 
 <Counter />
 
+## Filtering and Formatting Values
+
+The `ionInput` event can be used to filter or format the value of an input as the user types.
+
+import FilterPlayground from '@site/static/usage/v7/input/filter/index.md';
+
+<FilterPlayground />
 
 ## Theming
 
