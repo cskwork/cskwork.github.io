@@ -12,37 +12,39 @@
 
   <body>
     <ion-app>
-      <ion-content color="light">
-        <div class="container">
-          <ion-list inset="true">
-            <ion-item button="true" detail="false" id="select-fruits">
-              <ion-label>Favorite Fruits</ion-label>
-              <div slot="end" id="selected-fruits">0 Items</div>
-            </ion-item>
-          </ion-list>
-        </div>
-      </ion-content>
-
-      <ion-modal trigger="select-fruits">
-        <ion-header>
-          <ion-toolbar>
-            <ion-buttons slot="start">
-              <ion-button onclick="cancelChanges()">Cancel</ion-button>
-            </ion-buttons>
-            <ion-title>Favorite Fruits</ion-title>
-            <ion-buttons slot="end">
-              <ion-button onclick="confirmChanges()">Done</ion-button>
-            </ion-buttons>
-          </ion-toolbar>
-          <ion-toolbar>
-            <ion-searchbar></ion-searchbar>
-          </ion-toolbar>
-        </ion-header>
-        <ion-content color="light" class="ion-padding">
-          <ion-list id="modal-list" inset="true">
-          </ion-list>
+      <div id="ion-view-container-root">
+        <ion-content color="light">
+          <div class="container">
+            <ion-list inset="true">
+              <ion-item button="true" detail="false" id="select-fruits">
+                <ion-label>Favorite Fruits</ion-label>
+                <div slot="end" id="selected-fruits">0 Items</div>
+              </ion-item>
+            </ion-list>
+          </div>
         </ion-content>
-      </ion-modal>
+
+        <ion-modal trigger="select-fruits">
+          <ion-header>
+            <ion-toolbar>
+              <ion-buttons slot="start">
+                <ion-button onclick="cancelChanges()">Cancel</ion-button>
+              </ion-buttons>
+              <ion-title>Favorite Fruits</ion-title>
+              <ion-buttons slot="end">
+                <ion-button onclick="confirmChanges()">Done</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+            <ion-toolbar>
+              <ion-searchbar></ion-searchbar>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content color="light" class="ion-padding">
+            <ion-list id="modal-list" inset="true">
+            </ion-list>
+          </ion-content>
+        </ion-modal>
+      </div>
     </ion-app>
 
     <script>
