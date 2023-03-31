@@ -7,10 +7,10 @@ const VERSIONS_JSON = require('./versions.json');
 const BASE_URL = '/docs';
 
 module.exports = {
-  title: 'Ionic Documentation',
+  title: 'workerRabbit',
   tagline:
-    'Ionic is the app platform for web developers. Build amazing mobile, web, and desktop apps all with one shared code base and open web standards',
-  url: 'https://ionicframework.com',
+    'workerRabbit',
+  url: 'https://velog.io/@csk917work',
   baseUrl: `${BASE_URL}/`,
   i18n: {
     defaultLocale: 'en',
@@ -22,13 +22,13 @@ module.exports = {
   },
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/meta/favicon-96x96.png',
-  organizationName: 'ionic-team',
-  projectName: 'ionic-docs',
+  favicon: 'https://velog.velcdn.com/images/csk917work/profile/a8dd9a56-1e38-417b-833f-ec12bd72b998/image.png',
+  organizationName: 'workerRabbit',
+  projectName: 'workerRabbit',
   themeConfig: {
     metadata: [
-      { name: 'og:image', content: 'https://ionicframework.com/docs/img/meta/open-graph.png' },
-      { name: 'twitter:image', content: 'https://ionicframework.com/docs/img/meta/open-graph.png' },
+      { name: 'og:image', content: 'https://velog.velcdn.com/images/csk917work/profile/a8dd9a56-1e38-417b-833f-ec12bd72b998/image.png' },
+      { name: 'twitter:image', content: 'https://velog.velcdn.com/images/csk917work/profile/a8dd9a56-1e38-417b-833f-ec12bd72b998/image.png' },
       {
         name: 'twitter:card',
         content: 'summary_large_image',
@@ -63,6 +63,8 @@ module.exports = {
     },
     navbar: {
       hideOnScroll: true,
+      /*
+      SITE LOGO DISPLAY
       logo: {
         alt: 'Site Logo',
         src: `/logos/ionic-text-docs-dark.svg`,
@@ -72,6 +74,7 @@ module.exports = {
         width: 139,
         height: 28,
       },
+      */
       items: [
         {
           type: 'doc',
@@ -79,6 +82,7 @@ module.exports = {
           label: 'Guide',
           position: 'left',
         },
+        /*
         {
           type: 'doc',
           docId: 'components',
@@ -91,12 +95,14 @@ module.exports = {
           label: 'CLI',
           position: 'left',
         },
+       
         {
           type: 'doc',
           docId: 'native',
           label: 'Native',
           position: 'left',
         },
+       
         {
           type: 'cta',
           position: 'left',
@@ -227,6 +233,7 @@ module.exports = {
             target: '_blank',
           },
         },
+        */
       ],
     },
     tagManager: {
