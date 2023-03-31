@@ -8,6 +8,7 @@ import { PrismicRichText } from '@prismicio/react';
 export default function TOC({ toc, editUrl, ...props }) {
   const { prismicAds } = usePluginData('ionic-docs-ads');
   const [activeAd, setActiveAd] = useState<typeof prismicAds.data>();
+
   const location = useLocation();
 
   const isEmpty = toc.length <= 0;
@@ -20,18 +21,22 @@ export default function TOC({ toc, editUrl, ...props }) {
 
   return (
     <div className="toc-wrapper">
+     
       <h2>Contents</h2>
       <OriginalTOC toc={toc} {...props} />
+      {/*
       <EditThisPage editUrl={editUrl} />
+      */}
 
-      {activeAd && (
+      {/* Remove Add Block
+        activeAd && (
         <div className="internal-ad">
           <a
             href={activeAd.ad_url.url}
             target={activeAd.ad_url.target}
             // onClick={e => trackClick(activeAd.ad_id, e)}
           >
-            {/* Reponsive image since Prismic supports it out of the box */}
+           
             <picture>
               <source media="(min-width: 37.5em)" src={activeAd.ad_image.url} />
               <source src={activeAd.ad_image['1x'].url} />
@@ -45,8 +50,13 @@ export default function TOC({ toc, editUrl, ...props }) {
             </picture>
             <PrismicRichText field={activeAd.ad_copy} />
           </a>
-        </div>
-      )}
+        </div>)
+      */}
     </div>
   );
 }
+
+/*
+Add Block
+
+*/

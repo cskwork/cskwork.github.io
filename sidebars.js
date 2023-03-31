@@ -2,22 +2,28 @@ module.exports = {
   docs: [
     {
       type: 'category',
-      label: 'Getting Started',
+      label: '문서 소개',
       collapsed: false,
-      items: ['index', 'intro/environment', 'intro/cli', 'intro/cdn', 'intro/vscode-extension', 'intro/next'],
+      items: ['index', 
+              'intro/environment', 
+              //'intro/cli', 
+              //'intro/cdn', 
+              //'intro/vscode-extension', 
+              //'intro/next'
+              ],
     },
     {
       type: 'category',
-      label: 'Upgrade Guides',
+      label: '아키텍쳐',
       collapsed: false,
       items: [
         'updating/7-0',
-        'updating/6-0',
-        'updating/5-0',
-        'updating/4-0'
+        //'updating/6-0',
+        //'updating/5-0',
+        //'updating/4-0'
       ]
     },
-    {
+/*    {
       type: 'category',
       label: 'Developing',
       collapsed: false,
@@ -232,6 +238,7 @@ module.exports = {
         'reference/browser-support'
       ],
     },
+*/
   ],
 
   api: [
@@ -469,7 +476,12 @@ module.exports = {
       type: 'category',
       label: 'Toolbar',
       collapsed: false,
-      items: ['api/toolbar', 'api/header', 'api/footer', 'api/title', 'api/buttons', 'api/back-button'],
+      items: ['api/toolbar', 
+              'api/header', 
+              'api/footer', 
+              'api/title', 
+              'api/buttons', 
+              'api/back-button'],
     },
     {
       type: 'category',

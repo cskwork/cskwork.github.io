@@ -160,7 +160,7 @@ const openReactEditor = async (code: string, options?: EditorOptions) => {
     description: options?.description ?? DEFAULT_EDITOR_DESCRIPTION,
     files: {
       'public/index.html': index_html,
-      'src/index.tsx': index_tsx,
+      // 'src/index.tsx': index_tsx,
       'src/App.tsx': app_tsx,
       'src/main.tsx': code,
       'src/theme/variables.css': variables_css,
