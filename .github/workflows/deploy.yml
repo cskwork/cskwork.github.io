@@ -28,7 +28,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          repository: cskwork/ionic-docs
           personal_token: ${{ secrets.pat }}
           # Build output to publish to the `gh-pages` branch:
           publish_dir: ./build
