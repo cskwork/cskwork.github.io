@@ -10,7 +10,7 @@ module.exports = {
   title: 'workerRabbit',
   tagline:
     'workerRabbit',
-  url: 'https://velog.io/@csk917work',
+  url: 'https://cskwork.github.io',
   baseUrl: `${BASE_URL}/`,
   i18n: {
     defaultLocale: 'en',
