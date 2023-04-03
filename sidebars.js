@@ -2,20 +2,94 @@ module.exports = {
   docs: [
     {
       type: 'category',
-      label: '문서 소개',
+      label: 'Introduction',
       collapsed: false,
-      items: ['index', 
-              'intro/environment', 
-              //'intro/cli', 
-              //'intro/cdn', 
-              //'intro/vscode-extension', 
-              //'intro/next'
-              ],
+      items: [
+        'index', 
+      //'intro/environment', 
+      //'intro/cli', 
+      //'intro/cdn', 
+      //'intro/vscode-extension', 
+      //'intro/next'
+      ],
     },
     {
       type: 'category',
-      label: '아키텍쳐',
+      label: 'Module/Library',
       collapsed: false,
+      items: [
+        'updating/7-0',
+        //'updating/6-0',
+        //'updating/5-0',
+        //'updating/4-0'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Debugging',
+      collapsed: false,
+      items: [
+        'updating/7-0',
+        //'updating/6-0',
+        //'updating/5-0',
+        //'updating/4-0'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Framework',
+      collapsed: true,
+      items: [
+        'updating/7-0',
+        //'updating/6-0',
+        //'updating/5-0',
+        //'updating/4-0'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Database',
+      collapsed: true,
+      items: [
+        'updating/7-0',
+        //'updating/6-0',
+        //'updating/5-0',
+        //'updating/4-0'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Dev-Ops',
+      collapsed: true,
+      items: [
+        'updating/7-0',
+        //'updating/6-0',
+        //'updating/5-0',
+        //'updating/4-0'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Certificates',
+      collapsed: true,
+      items: [
+        'angular/overview',
+        {
+          type: 'category',
+          label: '정보처리기사',
+          items: [
+            'angular/your-first-app',
+
+          ],
+        },
+        'angular/lifecycle',
+
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Uncategorized',
+      collapsed: true,
       items: [
         'updating/7-0',
         //'updating/6-0',
@@ -247,253 +321,6 @@ module.exports = {
       label: 'Getting Started',
       collapsed: false,
       items: ['components'],
-    },
-    {
-      type: 'category',
-      label: 'Action Sheet',
-      collapsed: false,
-      items: ['api/action-sheet'],
-    },
-    {
-      type: 'category',
-      label: 'Accordion',
-      collapsed: false,
-      items: ['api/accordion', 'api/accordion-group'],
-    },
-    {
-      type: 'category',
-      label: 'Alert',
-      collapsed: false,
-      items: ['api/alert'],
-    },
-    {
-      type: 'category',
-      label: 'Badge',
-      collapsed: false,
-      items: ['api/badge'],
-    },
-    {
-      type: 'category',
-      label: 'Breadcrumb',
-      collapsed: false,
-      items: ['api/breadcrumb', 'api/breadcrumbs'],
-    },
-    {
-      type: 'category',
-      label: 'Button',
-      collapsed: false,
-      items: ['api/button', 'api/ripple-effect'],
-    },
-    {
-      type: 'category',
-      label: 'Card',
-      collapsed: false,
-      items: ['api/card', 'api/card-content', 'api/card-header', 'api/card-subtitle', 'api/card-title'],
-    },
-    {
-      type: 'category',
-      label: 'Checkbox',
-      collapsed: false,
-      items: ['api/checkbox'],
-    },
-    {
-      type: 'category',
-      label: 'Chip',
-      collapsed: false,
-      items: ['api/chip'],
-    },
-    {
-      type: 'category',
-      label: 'Content',
-      collapsed: false,
-      items: ['api/app', 'api/content'],
-    },
-    {
-      type: 'category',
-      label: 'Date & Time Pickers',
-      collapsed: false,
-      items: ['api/datetime', 'api/datetime-button', 'api/picker'],
-    },
-    {
-      type: 'category',
-      label: 'Floating Action Button',
-      collapsed: false,
-      items: ['api/fab', 'api/fab-button', 'api/fab-list'],
-    },
-    {
-      type: 'category',
-      label: 'Grid',
-      collapsed: false,
-      items: ['api/grid', 'api/col', 'api/row'],
-    },
-    {
-      type: 'category',
-      label: 'Infinite Scroll',
-      collapsed: false,
-      items: ['api/infinite-scroll', 'api/infinite-scroll-content'],
-    },
-    {
-      type: 'category',
-      label: 'Icons',
-      collapsed: false,
-      items: ['api/icon'],
-    },
-    {
-      type: 'category',
-      label: 'Input',
-      collapsed: false,
-      items: ['api/input', 'api/textarea'],
-    },
-    {
-      type: 'category',
-      label: 'Item',
-      collapsed: false,
-      items: [
-        'api/item',
-        'api/item-divider',
-        'api/item-group',
-        'api/item-sliding',
-        'api/item-options',
-        'api/item-option',
-        'api/label',
-        'api/note',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'List',
-      collapsed: false,
-      items: ['api/list', 'api/list-header'],
-    },
-    {
-      type: 'category',
-      label: 'Media',
-      collapsed: false,
-      items: [
-        'api/avatar',
-        'api/icon',
-        'api/img',
-        'api/thumbnail',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Menu',
-      collapsed: false,
-      items: ['api/menu', 'api/menu-button', 'api/menu-toggle', 'api/split-pane'],
-    },
-    {
-      type: 'category',
-      label: 'Modal',
-      collapsed: false,
-      items: ['api/modal', 'api/backdrop'],
-    },
-    {
-      type: 'category',
-      label: 'Navigation',
-      collapsed: false,
-      items: ['api/nav', 'api/nav-link'],
-    },
-    {
-      type: 'category',
-      label: 'Popover',
-      collapsed: false,
-      items: ['api/popover'],
-    },
-    {
-      type: 'category',
-      label: 'Progress Indicators',
-      collapsed: false,
-      items: ['api/loading', 'api/progress-bar', 'api/skeleton-text', 'api/spinner'],
-    },
-    {
-      type: 'category',
-      label: 'Radio',
-      collapsed: false,
-      items: ['api/radio', 'api/radio-group'],
-    },
-    {
-      type: 'category',
-      label: 'Range',
-      collapsed: false,
-      items: ['api/range'],
-    },
-    {
-      type: 'category',
-      label: 'Refresher',
-      collapsed: false,
-      items: ['api/refresher', 'api/refresher-content'],
-    },
-    {
-      type: 'category',
-      label: 'Reorder',
-      collapsed: false,
-      items: ['api/reorder', 'api/reorder-group'],
-    },
-    {
-      type: 'category',
-      label: 'Routing',
-      collapsed: false,
-      items: ['api/router', 'api/router-link', 'api/router-outlet', 'api/route', 'api/route-redirect'],
-    },
-    {
-      type: 'category',
-      label: 'Searchbar',
-      collapsed: false,
-      items: ['api/searchbar'],
-    },
-    {
-      type: 'category',
-      label: 'Segment',
-      collapsed: false,
-      items: ['api/segment', 'api/segment-button'],
-    },
-    {
-      type: 'category',
-      label: 'Select',
-      collapsed: false,
-      items: ['api/select', 'api/select-option'],
-    },
-    {
-      type: 'category',
-      label: 'Tabs',
-      collapsed: false,
-      items: ['api/tabs', 'api/tab', 'api/tab-bar', 'api/tab-button'],
-    },
-    {
-      type: 'category',
-      label: 'Toast',
-      collapsed: false,
-      items: ['api/toast'],
-    },
-    {
-      type: 'category',
-      label: 'Toggle',
-      collapsed: false,
-      items: ['api/toggle'],
-    },
-    {
-      type: 'category',
-      label: 'Toolbar',
-      collapsed: false,
-      items: ['api/toolbar', 
-              'api/header', 
-              'api/footer', 
-              'api/title', 
-              'api/buttons', 
-              'api/back-button'],
-    },
-    {
-      type: 'category',
-      label: 'Typography',
-      collapsed: false,
-      items: ['api/text'],
-    },
-    {
-      type: 'category',
-      label: 'Resources',
-      collapsed: false,
-      items: ['api'],
     },
   ],
 
