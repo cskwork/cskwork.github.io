@@ -12,7 +12,7 @@
     "crowdin:sync": "docusaurus write-translations && crowdin upload && crowdin download",
     "deploy": "docusaurus deploy",
     "docusaurus": "docusaurus",
-    "generate-markdown": "node scripts/native && concurrently \"node scripts/cli\" \"node scripts/release-notes\"",
+    "generate-markdown": "node -r esm scripts/native && concurrently \"node -r esm scripts/cli\" \"node -r esm scripts/release-notes\"",
     "serve": "docusaurus serve",
     "prestart": "npm run generate-markdown",
     "start": "docusaurus start",
@@ -69,6 +69,7 @@
     "@ionic/prettier-config": "^2.0.0",
     "@tsconfig/docusaurus": "^1.0.7",
     "@types/react": "^17.0.37",
+    "esm": "^3.2.25",
     "html-loader": "^4.2.0",
     "prettier": "^2.8.7",
     "typescript": "^5.0.3"
