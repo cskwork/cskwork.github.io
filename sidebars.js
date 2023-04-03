@@ -1,4 +1,5 @@
 module.exports = {
+  // ADD TO BOTH MD AND TABLE OF CONTENTS SIDEBARS
   docs: [
     {
       type: 'category',
@@ -104,14 +105,18 @@ module.exports = {
       type: 'category',
       label: 'Uncategorized',
       collapsed: false,
-      items: ['uncategorized/자바스크립트 Promise & Async Await 004eed99c774402bafad8d1d4c67276a'],
+      items: [
+        'uncategorized',
+        'uncategorized/자바스크립트 Promise & Async Await 004eed99c774402bafad8d1d4c67276a'
+        
+        ],
     },
-    {
-      type: 'category',
-      label: 'Uncategorized2',
-      collapsed: true,
-      items: ['uncategorized/자바 스크립트 기본 - Hello fa75a747a96e43588630088939fb6324'],
-    },
+    // {
+    //   type: 'category',
+    //   label: 'Uncategorized2',
+    //   collapsed: true,
+    //   items: ['uncategorized/자바 스크립트 기본 - Hello fa75a747a96e43588630088939fb6324'],
+    // },
   ],
 
   // api: [
@@ -119,7 +124,7 @@ module.exports = {
   //     type: 'category',
   //     label: 'Getting Started',
   //     collapsed: false,
-  //     // items: ['components'],
+  //     items: ['components'],
   //   },
   // ],
 

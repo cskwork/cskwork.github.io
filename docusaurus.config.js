@@ -92,6 +92,12 @@ module.exports = {
           label: 'Uncategorized',
           position: 'left',
         },
+        // {
+        //   type: 'doc',
+        //   docId: 'components',
+        //   label: 'Components',
+        //   position: 'left',
+        // },
         /*
         {
           type: 'doc',

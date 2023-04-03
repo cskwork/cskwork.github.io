@@ -1,20 +1,16 @@
 ---
-title: 목차2
-# slug: /uncategorized
-# sidebar_label: 목차2
+title: 목차
 hide_table_of_contents: false
-#demoUrl: https://docs-demo.ionic.io/
-#demoSourceUrl: https://github.com/ionic-team/docs-demo
 ---
 
 import DocsCard from '@components/global/DocsCard';
 import DocsCards from '@components/global/DocsCards';
 
 <head>
-  <title>목차2</title>
+  <title>목차</title>
   <meta
     name="description"
-    content="목차2"
+    content="목차"
   />
    
   <link rel="canonical" href="https://velog.io/@csk917work" />
@@ -30,7 +26,7 @@ import DocsCards from '@components/global/DocsCards';
   <DocsCard header="Introduction" href="/"  >
   </DocsCard>
   
-  <DocsCard header="Uncategorized" href="uncategorized/나는 생각이 너무 많아 정리"  >
+  <DocsCard header="자바스크립트 Promise & Async Await" href="uncategorized/자바스크립트 Promise & Async Await 004eed99c774402bafad8d1d4c67276a"  >
   </DocsCard>
  
 </DocsCards>
