@@ -1,6 +1,14 @@
 const unified = require('unified');
-const markdown = require('remark-parse');
-const html = require('remark-html');
+
+let markdown;
+import('remark-parse').then((module) => {
+  markdown = module;
+});
+
+let html;
+import('remark-html').then((module) => {
+  html = module;
+});
 
 function renderMarkdown(markdownString) {
   return unified().use(markdown).use(html).processSync(markdownString);
