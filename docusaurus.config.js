@@ -4,14 +4,15 @@ const fetch = require('node-fetch');
 
 const VERSIONS_JSON = require('./versions.json');
 
-const BASE_URL = '/';
+const BASE_URL = '/docs';
 
 module.exports = {
   title: 'workerRabbit',
   tagline:
     'workerRabbit',
-  url: 'https://cskwork.github.io',
-  baseUrl: `${BASE_URL}`,
+  //url: 'cskwork.github.io',
+  url:'peaceful-chebakia-c9ae13.netlify.app',
+  baseUrl: `${BASE_URL}/`,
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'ja'],
