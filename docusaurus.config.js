@@ -4,14 +4,16 @@ const fetch = require('node-fetch');
 
 const VERSIONS_JSON = require('./versions.json');
 
+// https://docusaurus.io/docs/api/docusaurus-config#baseurl
 const BASE_URL = '/docs';
+const HOST_URL = 'https://peaceful-chebakia-c9ae13.netlify.app';
 
 module.exports = {
   title: 'workerRabbit',
   tagline:
     'workerRabbit',
   //url: 'cskwork.github.io',
-  url:'peaceful-chebakia-c9ae13.netlify.app',
+  url:`${HOST_URL}`,
   baseUrl: `${BASE_URL}/`,
   i18n: {
     defaultLocale: 'en',
