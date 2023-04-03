@@ -8,6 +8,7 @@ src/pages
 docs/api
 docs/native
 docs/cli/commands
+docs/uncategorized
 
 .docusaurus
 .github

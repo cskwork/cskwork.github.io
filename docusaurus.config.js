@@ -83,13 +83,13 @@ module.exports = {
         {
           type: 'doc',
           docId: 'index',
-          label: 'Guide2',
+          label: 'DeveloperDocs',
           position: 'left',
         },
          {
           type: 'doc',
-          docId: 'cli',
-          label: 'CLI',
+          docId: 'uncategorized',
+          label: 'Uncategorized',
           position: 'left',
         },
         /*
