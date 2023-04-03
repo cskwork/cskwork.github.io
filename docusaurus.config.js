@@ -14,7 +14,8 @@ module.exports = {
     'workerRabbit',
   //url: 'cskwork.github.io',
   url:`${HOST_URL}`,
-  baseUrl: `${BASE_URL}/`,
+  //baseUrl: `${BASE_URL}/`,
+  baseUrl: process.env.NODE_ENV === 'development' ? `${BASE_URL}/` : `/`,
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'ja'],
