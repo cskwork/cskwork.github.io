@@ -11,7 +11,7 @@ module.exports = {
   tagline:
     'workerRabbit',
   url: 'https://cskwork.github.io',
-  baseUrl: `${BASE_URL}/`,
+  baseUrl: `${BASE_URL}`,
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'ja'],
