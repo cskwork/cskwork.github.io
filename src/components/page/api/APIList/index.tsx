@@ -6,7 +6,7 @@ import clsx from 'clsx';
 function APIList({ sidebar, ...props }): JSX.Element {
   return (
     <div {...props} className={clsx(props.className, 'api-list')}>
-      {sidebars.api.map((section) => {
+      { sidebars.api && sidebars.api.map((section) => {
         if (typeof section !== 'object') return;
 
         return (
