@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 
 const VERSIONS_JSON = require('./versions.json');
 
-const BASE_URL = '/docs';
+const BASE_URL = '/';
 
 module.exports = {
   title: 'workerRabbit',
