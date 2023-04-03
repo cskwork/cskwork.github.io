@@ -83,7 +83,13 @@ module.exports = {
         {
           type: 'doc',
           docId: 'index',
-          label: 'Guide',
+          label: 'Guide2',
+          position: 'left',
+        },
+         {
+          type: 'doc',
+          docId: 'cli',
+          label: 'CLI',
           position: 'left',
         },
         /*
@@ -249,9 +255,9 @@ module.exports = {
       additionalLanguages: ['shell-session', 'http'],
     },
     algolia: {
-      appId: 'O9QSL985BS',
-      apiKey: 'ceb5366064b8fbf70959827cf9f69227',
-      indexName: 'ionicframework',
+      appId: 'FSVQXX7EI4',
+      apiKey: 'fac1f6521f5aa73b17048bdc4785173a',
+      indexName: 'developerDocumentation',
       contextualSearch: true,
     },
   },
