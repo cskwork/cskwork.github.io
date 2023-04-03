@@ -11,3 +11,4 @@ files:
       - /docs/api/**/*
       - /docs/cli/commands/**/*
       - /docs/native/**/*
+      - /docs/uncategorized/**/*
