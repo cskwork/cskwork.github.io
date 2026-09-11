@@ -1,0 +1,84 @@
+baseURL = "https://cskwork.github.io/"
+locale = "en-us"
+title = "AI Insights Lab"
+theme = "PaperMod"
+enableGitInfo = true
+enableRobotsTXT = true
+
+[pagination]
+  pagerSize = 10
+
+[params]
+  env = "production"
+  description = "Practical, tested guides for developers shipping with AI coding agents: Claude Code, agent workflows, costs, and self-hosted LLMs."
+  author = "AI Insights Lab"
+  keywords = ["Claude Code", "AI coding agents", "agentic workflows", "LLM", "self-hosted LLM"]
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowRssButtonInSectionTermList = true
+  UseHugoToc = true
+  disableSpecialCharHyphenation = true
+
+  [params.homeInfoParams]
+    Title = "AI Insights Lab"
+    Content = "Hands-on guides for developers who ship with AI coding agents. Claude Code setups, agent workflows, real cost numbers, and small models on cheap hardware. Everything here is run before it is written up."
+
+  [[params.socialIcons]]
+    name = "github"
+    url = "https://github.com/cskwork"
+
+  [[params.socialIcons]]
+    name = "rss"
+    url = "/index.xml"
+
+[params.cover]
+  hidden = false
+  hiddenInList = false
+  hiddenInSingle = false
+
+[params.fuseOpts]
+  isCaseSensitive = false
+  shouldSort = true
+  location = 0
+  distance = 1000
+  threshold = 0.4
+  minMatchCharLength = 0
+  keys = ["title", "permalink", "summary", "content"]
+
+[frontmatter]
+  date = ["date", ":default"]
+  lastmod = [":git", "lastmod", "date"]
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+  [markup.goldmark.renderer]
+    unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[[menus.main]]
+  name = "Posts"
+  url = "/posts/"
+  weight = 1
+
+[[menus.main]]
+  name = "Archive"
+  url = "/archives/"
+  weight = 5
+
+[[menus.main]]
+  name = "Search"
+  url = "/search/"
+  weight = 10
+
+[[menus.main]]
+  name = "Tags"
+  url = "/tags/"
+  weight = 15
