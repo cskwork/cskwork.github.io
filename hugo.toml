@@ -36,6 +36,16 @@ enableRobotsTXT = true
     name = "rss"
     url = "/index.xml"
 
+  # Monetization and analytics. Leave empty until the accounts exist.
+  # AdSense: after approval, set the publisher ID and add static/ads.txt.
+  [params.adsense]
+    client = ""
+
+[services]
+  # GA4 measurement ID, e.g. "G-XXXXXXXXXX". Empty disables the tag.
+  [services.googleAnalytics]
+    id = ""
+
 [params.cover]
   hidden = false
   hiddenInList = false
@@ -82,3 +92,13 @@ enableRobotsTXT = true
   name = "Tags"
   url = "/tags/"
   weight = 15
+
+[[menus.main]]
+  name = "About"
+  url = "/about/"
+  weight = 20
+
+[[menus.main]]
+  name = "Privacy"
+  url = "/privacy/"
+  weight = 25

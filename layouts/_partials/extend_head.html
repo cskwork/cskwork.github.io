@@ -1,0 +1,4 @@
+{{- /* Google AdSense (auto ads). Activates only when params.adsense.client is set, e.g. "ca-pub-1234567890123456". */ -}}
+{{- with site.Params.adsense.client }}
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}" crossorigin="anonymous"></script>
+{{- end }}
